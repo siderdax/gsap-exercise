@@ -12,6 +12,7 @@ const config: Config = {
         "galaxy-1": "url('/static/galaxy1.png')",
         "galaxy-2": "url('/static/galaxy2.png')",
         "galaxy-3": "url('/static/galaxy3.png')",
+        "galaxy-4": "url('/static/galaxy4.png')",
       },
     },
   },

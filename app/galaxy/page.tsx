@@ -8,10 +8,11 @@ export default function Page() {
     gsap.registerEffect({
       name: 'blink',
       effect: (targets: any, config: any) => {
-        var tl = gsap.timeline({ repeat: -1, delay: config.delay })
-        tl.to(targets, {
-          duration: config.duration,
-          opacity: 0,
+        var tl = gsap.timeline({
+          repeat: -1,
+          yoyo: true,
+          delay: config.delay,
+          repeatDelay: 2,
         })
         tl.to(targets, {
           duration: config.duration,
@@ -19,12 +20,17 @@ export default function Page() {
         })
         return tl
       },
-      defaults: { duration: 7, delay: 0 },
+      defaults: { duration: 10, delay: 0 },
     })
 
-    gsap.effects.blink('.galaxy-1')
-    gsap.effects.blink('.galaxy-2', { duration: 6, delay: 7 })
-    gsap.effects.blink('.galaxy-3', { duration: 5, delay: 7 })
+    gsap.set('.galaxy-1', { opacity: 0 })
+    gsap.set('.galaxy-2', { opacity: 0 })
+    gsap.set('.galaxy-3', { opacity: 0 })
+    gsap.set('.galaxy-4', { opacity: 0 })
+    gsap.effects.blink('.galaxy-1', { duration: 4 })
+    gsap.effects.blink('.galaxy-2', { duration: 3, delay: 1 })
+    gsap.effects.blink('.galaxy-3', { duration: 2, delay: 2 })
+    gsap.effects.blink('.galaxy-4', { duration: 1, delay: 3 })
   }, [])
 
   return (
@@ -40,6 +46,7 @@ export default function Page() {
       <div className="galaxy-1 absolute h-full w-full bg-galaxy-1" />
       <div className="galaxy-2 absolute h-full w-full bg-galaxy-2" />
       <div className="galaxy-3 absolute h-full w-full bg-galaxy-3" />
+      <div className="galaxy-4 absolute h-full w-full bg-galaxy-4" />
       {/* <div className="flex w-full flex-grow flex-col items-center bg-blue-50">
             <div className="green h-[50px] w-[50px] rounded-md bg-green-500" />
             <div className="purple h-[50px] w-[50px] rounded-md bg-purple-500" />
